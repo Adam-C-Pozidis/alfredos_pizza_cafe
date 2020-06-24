@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="pizza-header">
+    <h2><strong>PIZZAS </strong> AT ALFREDO'S PIZZA CAFE</h2>
+  </div>
+  <div class="card-columns">
+    <%@menuitems.each do |item|%>
+      <% if item.food_type == "pizza"%>
+        <div class="card">
+          <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/51CE9KY1cpL._SX425_.jpg" alt="">
+          <div class="card-body">
+            <h5 class="card=title"><%= item.name %></h5>
+            <p class="card-text"><%= item.description %></p>
+          </div>
+          <div class="card-footer d-flex align-items-center justify-content-between">
+            <div class="price">
+              $<%= item.price %>
+            </div>
+            <div class="text-right">
+              <button class="btn btn-sm btn-danger" type="button" name="button"><i class="fa fa-minus"></i></button>
+              <% if session[:shopping_cart] %>
+                <input class="quantity" type="number" name="quantity" value=<%= @totalitems %>>
+              <% else %>
+                <input class="quantity" type="number" name="quantity" value="">
+              <% end %>
+              <button class="btn btn-sm btn-success" type="button" name="button"><i class="fa fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+
+
+  <div class="drink-header">
+    <h2><strong>DRINKS </strong> AT ALFREDO'S PIZZA CAFE</h2>
+  </div>
+  <div class="card-columns">
+    <%@menuitems.each do |item|%>
+      <% if item.food_type == "drink"%>
+        <div class="card">
+          <img class="card-img-top" src="https://lh3.googleusercontent.com/proxy/SPrqCbtMMqVGTk7h-Mx3ZYAt_8fW-tThXD88yO29JLlmgSYMOHW4Eh5NGf5_jDCogONnHRDNdtmpMdIWLXbqPDHK" alt="">
+          <div class="card-body">
+            <h5 class="card=title"><%= item.name %></h5>
+            <p class="card-text"><%= item.description %></p>
+          </div>
+          <div class="card-footer d-flex align-items-center justify-content-between">
+            <div class="price">
+              $<%= item.price %>
+            </div>
+            <div class="text-right">
+              <button class="btn btn-sm btn-danger" type="button" name="button"><i class="fa fa-minus"></i></button>
+              <% if session[:shopping_cart] %>
+                <input class="quantity" type="number" name="quantity" value=<%= @totalitems %>>
+              <% else %>
+                <input class="quantity" type="number" name="quantity" value="">
+              <% end %>
+              <button class="btn btn-sm btn-success" type="button" name="button"><i class="fa fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
