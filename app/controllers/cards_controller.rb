@@ -15,7 +15,7 @@ class CardsController < ApplicationController
     @card.update_attributes(card_params)
     @card.destroy if @card.quantity == 0
     @shopping_cart_cards = current_shopping_cart.cards
-
+    redirect_to shopping_carts_path
   end
 
   def destroy
