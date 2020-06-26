@@ -16,6 +16,9 @@ ActiveRecord::Schema.define(version: 2020_06_24_113723) do
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
+    t.integer "quantity"
+    t.decimal "total"
+    t.decimal "unit_price"
     t.bigint "menu_item_id", null: false
     t.bigint "shopping_cart_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_06_24_113723) do
     t.string "name"
     t.string "food_type"
     t.text "description"
-    t.float "price"
+    t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -41,7 +44,9 @@ ActiveRecord::Schema.define(version: 2020_06_24_113723) do
   end
 
   create_table "shopping_carts", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.decimal "subtotal"
+    t.decimal "total"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_shopping_carts_on_user_id"

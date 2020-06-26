@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card">
+    <% @shopping_cart_cards.each do |item|%>
+    <div class="row">
+      <div class="col-sm-3">
+        <% if item.menu_item.food_type == "pizza" %>
+          <img src="https://images-na.ssl-images-amazon.com/images/I/51CE9KY1cpL._SX425_.jpg" alt="">
+        <% else %>
+          <img src="https://images.cdn1.stockunlimited.net/clipart/iced-drink-with-fruit-slice_1902887.jpg" alt="">
+        <% end %>
+      </div>
+      <div class="col-sm-6">
+        <div class="card-body-right">
+          <h4 class="card-title" ><%= item.menu_item.name %> x <%= item.quantity %> </h4>
+          <%= form_for item, remote: true do |f| %>
+            <%= f.hidden_field :menu_item_id, :value => item.menu_item.id %>
+            <%= f.number_field :quantity, :value => item.quantity.to_i, :min => 0 %>
+            <%= f.submit "Update cart" %>
+
+            <%= link_to "Remove Items", card_path(item), method: :delete, remote: true%>
+          <% end %>
+          <h2>Subtotal: <%= item.total %></h2>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

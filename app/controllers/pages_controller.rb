@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
 
-  def menu
-    @menuitems = MenuItem.all
+  def index
+    @menu_items = MenuItem.all
+    @card = current_shopping_cart.cards.new
   end
 
 end
