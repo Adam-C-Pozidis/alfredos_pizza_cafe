@@ -1,13 +1,7 @@
 class ApplicationController < ActionController::Base
-
+  include ApplicationHelper
+  
   before_action :current_shopping_cart
-  before_action :current_customer
-
-  def current_customer
-    if session[:user_id]
-      @customer = User.find(session[:user_id])
-    end
-  end
 
   def current_shopping_cart
     if login?
@@ -21,11 +15,5 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
-  def login?
-    !!current_customer
-  end
-
-
 
 end

@@ -1,0 +1,15 @@
+<nav class="navbar navbar-light bg-light justify-content-between fixed-top">
+  <a class="navbar-brand"><strong>Alfredo's Pizza Caffe</strong></a>
+  <form class="form-inline">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div id="cart-item">
+          <%= render 'shopping_carts/cart_items_for_navbar' %>
+        </div>
+      </div>
+    </div>
+  </form>
+</nav>
