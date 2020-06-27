@@ -1,2 +1,2 @@
-$('#cart').html("<% j (render('shopping_carts/cart')) %>")
-$('#cart-item').html("<% j (render('shopping_carts/cart_items')) %>")
+$('#cart').html("<%= j (render partial: 'shopping_carts/cart') %>")
+$('#cart-item').html("<%= j (render partial: 'shopping_carts/cart_items') %>")
