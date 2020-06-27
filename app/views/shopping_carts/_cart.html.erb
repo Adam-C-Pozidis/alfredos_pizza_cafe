@@ -1,4 +1,3 @@
-<div class="card">
-
-  <%= link_to "Total Cost of $#{current_shopping_cart.subtotal}" ,shopping_carts_path %>
+<div class="card sticky-top">
+  <%= link_to "Checkout Cost of $#{current_shopping_cart.subtotal}" ,shopping_carts_path, class: "btn" %>
 </div>

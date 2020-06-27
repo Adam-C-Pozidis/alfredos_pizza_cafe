@@ -1,17 +1,23 @@
 <nav class="navbar navbar-light bg-light justify-content-between fixed-top">
-  <a class="navbar-brand"><strong>Alfredo's Pizza Caffe</strong></a>
+  <a href="/pages" class="navbar-brand"><strong>Alfredo's Pizza Caffe</strong></a>
   <form class="form-inline">
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
+        <% if user_signed_in? %>
+          <%= user.email %>'
+        <% else %>
+          Log in
+        <% end %>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <div id="dropdown-update">
-          <div id="test">
-            <%= render 'pages/cart_items_for_navbar' %>
-
-          </div>
-
+          <% if user_signed_in? %>
+            <a class="dropdown-item" href="#">Older orders</a>
+            <a class="dropdown-item" href="#">Log out</a>
+          <% else %>
+            <a class="dropdown-item" href="#">Log in</a>
+            <a class="dropdown-item" href="#">Sign up</a>
+          <% end %>
         </div>
       </div>
     </div>

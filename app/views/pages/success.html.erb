@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="text-center">
+    <h3>The order has been received</h3>
+    <%= params[:lname] %>, <%= params[:fname] %> <br>
+    <%= params[:address] %>
+    <h4>Total cost: $<%= @shopping_cart.subtotal + 2.44 %></h4>
+    <br> <br>
+    <%= link_to "New Order", pages_path, class: "btn btn-info" %>
+  </div>
+</div>

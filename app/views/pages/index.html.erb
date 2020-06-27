@@ -1,5 +1,4 @@
 
-  <%= render 'navbar' %>
 
 <div class="row">
   <div class="menu-items col-sm-8">
@@ -67,30 +66,6 @@
   <div class="col-sm-3">
     <div class="pizza-header">
       <h2><strong>SHOPPING</strong> CART</h2>
-    </div>
-    <div class="card">
-
-    <% @shopping_cart_cards.each do |item|%>
-    <div class="card">
-
-        <% if item.menu_item.food_type == "pizza" %>
-          <img id="nav-cart-img"src="https://images-na.ssl-images-amazon.com/images/I/51CE9KY1cpL._SX425_.jpg" alt="">
-        <% else %>
-          <img id="nav-cart-img" src="https://images.cdn1.stockunlimited.net/clipart/iced-drink-with-fruit-slice_1902887.jpg" alt="">
-        <% end %>
-        <div class="card-body">
-
-        <%= item.menu_item.name %> x
-        <%= form_for item, remote: true do |f| %>
-          <%= f.hidden_field :menu_item_id, :value => item.menu_item.id %>
-          <%= f.number_field :quantity, :value => item.quantity.to_i, :min => 0 %>
-          <%= f.submit "Update cart", class: "btn-sm"  %>
-          <small><%= link_to "Remove Items", card_path(item), method: :delete, remote: true%></small>
-        <% end %>
-        Subtotal: $<%= item.total %>
-      </div>
-    </div>
-      <% end %>
     </div>
 
     <div id="cart">

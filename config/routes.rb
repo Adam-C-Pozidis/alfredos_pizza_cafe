@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :cards, only: %i[update create destroy]
   resource :shopping_carts, only: :show
-  resources :pages, only: :index
+  resources :pages, only: %i[index]
+
+  get 'confirmation', to: 'pages#confirmation'
+  get 'success', to: 'pages#success'
 end
