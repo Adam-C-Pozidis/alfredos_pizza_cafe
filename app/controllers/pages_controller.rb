@@ -1,7 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_shopping_cart, except: :home
-  def home
-  end
+  before_action :authenticate_user!, only: :confirmation
 
   def index
     @menu_items = MenuItem.all
@@ -13,6 +11,10 @@ class PagesController < ApplicationController
   end
 
   def success
+    if params[:fname] == "" || params[:lname] == "" || params[:address] == ""
+    else
+      @shopping_cart.destroy
+    end
   end
 
   private

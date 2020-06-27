@@ -1,10 +1,20 @@
 <div class="container">
-  <div class="text-center">
-    <h3>The order has been received</h3>
-    <%= params[:lname] %>, <%= params[:fname] %> <br>
-    <%= params[:address] %>
-    <h4>Total cost: $<%= @shopping_cart.subtotal + 2.44 %></h4>
-    <br> <br>
-    <%= link_to "New Order", pages_path, class: "btn btn-info" %>
+  <% if params[:fname] == "" || params[:lname] == "" || params[:address] == "" %>
+    <div class="card text-center">
+      <h1>Some informations are missing!</h1>
+      <h3>Could not complete order</h3>
+    </div>
+    <br>
+    <%= link_to "Back to order", confirmation_path, class: "btn btn-info" %>
+    <% else %>
+
+
+    <div class="text-center">
+      <h3>The order has been received</h3>
+      <%= params[:lname] %>, <%= params[:fname] %> <br>
+      <%= params[:address] %>
+      <br> <br>
+      <%= link_to "New Order", pages_path, class: "btn btn-info" %>
+    </div>
+    <% end %>
   </div>
-</div>
