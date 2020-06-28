@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get 'confirmation', to: 'pages#confirmation'
   get 'success', to: 'pages#success'
   get 'fail', to: 'pages#fail'
+  get 'currency_dollars', to: 'pages#currency_dollars'
+  get 'currency_euros', to: 'pages#currency_euros'
 end

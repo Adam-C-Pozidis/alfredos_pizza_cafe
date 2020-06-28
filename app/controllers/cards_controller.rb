@@ -6,13 +6,6 @@ class CardsController < ApplicationController
     @card = @shopping_cart.cards.new(card_params)
     @card.save
     session[:shopping_cart_id] = @shopping_cart.id
-
-    # if @shopping_cart.cards.include?(Card.find(@card.menu_item.id))
-    #   @shopping_cart.cards.map! { |card| card == Card.find(@card.menu_item.id ?
-    #     card.update_attributes(:quantity += params[:quantity]) : card }
-    # else
-    #   @card.save
-    # end
   end
 
 

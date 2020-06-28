@@ -13,6 +13,10 @@ class ShoppingCart < ApplicationRecord
     cards.collect{|card| card.valid? ? card.unit_price*card.quantity : 0}.sum
   end
 
+  def price_in_euros
+    (subtotal * 0.89).round(2)
+  end
+
   private
 
   def set_subtotal

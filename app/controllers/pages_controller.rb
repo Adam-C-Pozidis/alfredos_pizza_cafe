@@ -22,12 +22,21 @@ class PagesController < ApplicationController
   def fail
   end
 
+  def currency_dollars
+    session[:currency] = "dollars"
+    redirect_to root_path
+  end
+
+  def currency_euros
+    session[:currency] = "euros"
+    redirect_to root_path
+  end
+
   private
 
   def set_shopping_cart
     @shopping_cart = current_shopping_cart
   end
-
 
 
 end

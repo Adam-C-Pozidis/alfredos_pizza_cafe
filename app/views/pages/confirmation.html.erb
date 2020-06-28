@@ -1,18 +1,25 @@
 <div class="container">
 
   <%@shopping_cart.cards.each do |card| %>
-    <div class="">
-      <%= card.menu_item.name %> x <%= card.quantity %> : $<%= card.total %>
-    </div>
+    <% if session[:currency] == 'euros' %>
+      <div>
+        <%= card.menu_item.name %> x <%= card.quantity %> : €<%= card.price_in_euros %>
+      </div>
+    <% else %>
+      <div>
+        <%= card.menu_item.name %> x <%= card.quantity %> : $<%= card.total %>
+      </div>
+    <% end %>
   <% end %>
 
   <% unless current_shopping_cart.subtotal == 0 %>
-    <div class="">
-      Order prices is : $<%= current_shopping_cart.subtotal %> + $2.44 for delivery cost
+    <% if session[:currency] == 'euros' %>
+    <div>
+      Order prices is : €<%= current_shopping_cart.price_in_euros %> + <%= (2.44*0.89).round(2) %> for delivery cost
     </div>
     <br>
-    <div class="">
-      TOTAL COST: $<%= current_shopping_cart.subtotal + 2.44 %>
+    <div>
+      TOTAL COST: €<%= current_shopping_cart.price_in_euros + (2.44*0.89).round(2) %>
     </div>
     <br>
 
@@ -23,6 +30,25 @@
       Phone number: <%= f.text_field :phone_number %> <br><br>
       <%= f.submit "Confirm" %>
     <% end %>
+
+    <% else %>
+      <div>
+        Order prices is : $<%= current_shopping_cart.subtotal %> + $2.44 for delivery cost
+      </div>
+      <br>
+      <div>
+        TOTAL COST: $<%= current_shopping_cart.subtotal + 2.44 %>
+      </div>
+      <br>
+
+        <%= form_for @order do |f| %>
+        First name: <%= f.text_field :first_name %> <br>
+        Last name: <%= f.text_field :last_name %> <br>
+        Address: <%= f.text_field :address %> <br>
+        Phone number: <%= f.text_field :phone_number %> <br><br>
+        <%= f.submit "Confirm" %>
+      <% end %>
+  <% end %>
 
   <% else %>
     <div class="card text-center">

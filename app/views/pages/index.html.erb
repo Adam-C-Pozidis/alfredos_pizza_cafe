@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="menu-items col-sm-8">
 
@@ -14,8 +15,12 @@
               <p class="card-text"><%= item.description %></p>
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-              <div class="price">
-                $<%= item.price %>
+              <div id="price" class="price">
+                <% if session[:currency] == "euros" %>
+                  €<%= item.price_in_euros %>
+                <% else %>
+                  $<%= item.price %>
+                <% end %>
               </div>
               <div class="text-right">
                 <%= form_for @card, remote: true do |f| %>
@@ -29,7 +34,6 @@
         <% end %>
       <% end %>
     </div>
-
 
 
     <div class="drink-header">
@@ -46,7 +50,11 @@
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
               <div id="price" class="price">
-                $<%= item.price %>
+                <% if session[:currency] == "euros" %>
+                  €<%= item.price_in_euros %>
+                <% else %>
+                  $<%= item.price %>
+                <% end %>
               </div>
               <div class="text-right">
                 <%= form_for @card, remote: true do |f| %>
@@ -61,6 +69,7 @@
       <% end %>
     </div>
   </div>
+
   <div class="col-sm-3">
     <div class="pizza-header">
       <h2><strong>SHOPPING</strong> CART</h2>

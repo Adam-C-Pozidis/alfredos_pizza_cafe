@@ -23,7 +23,11 @@
               <%= link_to "Remove Items", card_path(item), method: :delete, remote: true, class: "btn btn-danger"%>
             <% end %>
             <div class="border-bottom mt-2 ">
-              <h2>Subtotal: $<%= item.total %></h2>
+              <% if session[:currency] == 'euros' %>
+                <h2>Subtotal: €<%= item.price_in_euros %></h2>
+              <% else %>
+                <h2>Subtotal: $<%= item.total %></h2>
+              <% end %>
             </div>
             <br>
           </div>
@@ -31,7 +35,11 @@
       </div>
       <% end %>
     </div>
-    <h2>Total : $<%= current_shopping_cart.subtotal %></h2>
+    <% if session[:currency] == 'euros' %>
+      <h2>Total : €<%= current_shopping_cart.price_in_euros %></h2>
+    <% else %>
+      <h2>Total : $<%= current_shopping_cart.subtotal %></h2>
+      <% end %>
     <%= link_to "Proceed to Checkout", confirmation_path, class: "btn btn-success" %>
     <% else %>
       <div class="card text-center">

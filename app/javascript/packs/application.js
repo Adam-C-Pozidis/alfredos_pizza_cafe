@@ -17,4 +17,4 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-// require('packs/components/currency')
+import currency from 'packs/components/currency'

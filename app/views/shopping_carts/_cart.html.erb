@@ -1,3 +1,7 @@
 <div class="card checkout">
+  <% if session[:currency] == "euros" %>
+  <%= link_to "Checkout Cost of €#{current_shopping_cart.price_in_euros}" ,shopping_carts_path, class: "btn" %>
+    <% else %>
   <%= link_to "Checkout Cost of $#{current_shopping_cart.subtotal}" ,shopping_carts_path, class: "btn" %>
+  <% end %>
 </div>

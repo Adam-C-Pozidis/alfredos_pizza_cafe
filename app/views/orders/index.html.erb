@@ -11,13 +11,22 @@
     <div class="card-text ml-2">
       <% order.cards.each do |card| %>
       <%= card.menu_item.name %> x <%= card.quantity %>
-      Subtotal: $<%= card.total %> <br>
+        <% if session[:currency] = 'euros' %>
+        Subtotal: €<%= card.price_in_euros %> <br>
+        <% else %>
+        Subtotal: $<%= card.total %> <br>
+        <% end %>
       <% end %>
       <br>
     </div>
     <div class="card-footer">
-      <strong>Total cost</strong> with delivery: $<%= order.subtotal + 2.44 %>, ordered at <%= order.created_at.to_date %>
+      <% if session[:currency] = 'euros' %>
+        <strong>Total cost</strong> with delivery: €<%= (order.price_in_euros + (2.44*0.89)).round(2) %>, ordered at <%= order.created_at.to_date %>
+      <% else %>
+        <strong>Total cost</strong> with delivery: $<%= order.subtotal + 2.44 %>, ordered at <%= order.created_at.to_date %>
+      <% end %>
     </div>
   </div>
       <% end %>
 </div>
+€

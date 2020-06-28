@@ -19,6 +19,10 @@ class Card < ApplicationRecord
     unit_price * quantity
   end
 
+  def price_in_euros
+    (total * 0.89).round(2)
+  end
+
   private
 
   def set_unit_price
