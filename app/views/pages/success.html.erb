@@ -1,20 +1,10 @@
 <div class="container">
-  <% if params[:fname] == "" || params[:lname] == "" || params[:address] == "" %>
-    <div class="card text-center">
-      <h1>Some informations are missing!</h1>
-      <h3>Could not complete order</h3>
-    </div>
-    <br>
-    <%= link_to "Back to order", confirmation_path, class: "btn btn-info" %>
-    <% else %>
-
-
     <div class="text-center">
       <h3>The order has been received</h3>
-      <%= params[:lname] %>, <%= params[:fname] %> <br>
-      <%= params[:address] %>
+      <%= session[:order]["first_name"] %>, <%= session[:order]["last_name"] %> <br>
+      <%= session[:order]["address"] %> <br>
+      <%= session[:order]["phone_number"] %>
       <br> <br>
       <%= link_to "New Order", pages_path, class: "btn btn-info" %>
     </div>
-    <% end %>
   </div>

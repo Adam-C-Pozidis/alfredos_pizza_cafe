@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   resource :shopping_carts, only: :show
   resources :cards, only: %i[update create destroy]
   resources :pages, only: :index
-  resources :orders, only: :index
+  resources :orders, only: %i[index create]
 
   get 'confirmation', to: 'pages#confirmation'
   get 'success', to: 'pages#success'
+  get 'fail', to: 'pages#fail'
 end

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light bg-light justify-content-between fixed-top">
-  <a href="/pages" class="navbar-brand"><strong>Alfredo's Pizza Caffe</strong></a>
+  <a href="/pages" class="navbar-brand"><strong>Alfredo's Pizza Cafe</strong></a>
   <form class="form-inline">
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -12,11 +12,11 @@
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <div id="dropdown-update">
           <% if user_signed_in? %>
-            <a class="dropdown-item" href="#">Older orders</a>
+            <a class="dropdown-item" href="/orders">Older orders</a>
             <a class="dropdown-item" href="/users/sign_out" data-method="delete">Log out</a>
           <% else %>
             <a class="dropdown-item" href="/users/sign_in">Log in</a>
-            <a class="dropdown-item" href="#">Sign up</a>
+            <a class="dropdown-item" href="/users/sign_up">Sign up</a>
           <% end %>
         </div>
       </div>

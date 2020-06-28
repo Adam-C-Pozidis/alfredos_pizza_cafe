@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: :confirmation
 
   def index
     @menu_items = MenuItem.all
@@ -8,13 +7,19 @@ class PagesController < ApplicationController
   end
 
   def confirmation
+    @order= Order.new
   end
 
   def success
-    if params[:fname] == "" || params[:lname] == "" || params[:address] == ""
-    else
-      @shopping_cart.destroy
+    @order = Order.find(session[:order]["id"])
+    if user_signed_in?
+      @order.user = current_user
+      @order.save
     end
+    session[:shopping_cart] = ShoppingCart.create
+  end
+
+  def fail
   end
 
   private
@@ -22,5 +27,7 @@ class PagesController < ApplicationController
   def set_shopping_cart
     @shopping_cart = current_shopping_cart
   end
+
+
 
 end

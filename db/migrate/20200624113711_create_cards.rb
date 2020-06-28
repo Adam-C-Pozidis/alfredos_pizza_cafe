@@ -5,8 +5,8 @@ class CreateCards < ActiveRecord::Migration[6.0]
       t.decimal :total
       t.decimal :unit_price
       t.references :menu_item, null: false, foreign_key: true
-      t.references :shopping_cart, null: false, foreign_key: true
-
+      t.references :shopping_cart, null: true, foreign_key: true
+      t.references :order, null: true, foreign_key: true
       t.timestamps
     end
   end
