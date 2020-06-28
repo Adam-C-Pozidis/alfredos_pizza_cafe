@@ -3,7 +3,7 @@
   <form class="form-inline">
     <div class="dropdown">
       <a class="btn btn-sm" href="currency_dollars">Dollars</a>/<a class="btn btn-sm" href="currency_euros">Euros</a>
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn btn-secondary dropdown-toggle clickable" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <% if user_signed_in? %>
           <%= current_user.email %>
         <% else %>
