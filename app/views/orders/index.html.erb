@@ -1,8 +1,23 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
-<% @orders.each do |order| %>
-  <% order.cards.each do |card| %>
-    <%= card.menu_item.name %> x <%= card.quantity %> : <h2>Subtotal: $<%= card.total %></h2>
-  <% end %>
-  <%= order.subtotal %>
-<% end %>
+<div class="container">
+
+  <h1 class="pizza-header" ><strong>ORDER </strong> HISTORY</h1>
+  <% @orders.each do |order| %>
+
+  <div class="card mt-3 ">
+      <div class="card-title ml-2">
+        <%= order.last_name.capitalize %>, <%= order.first_name.capitalize %> <br>
+        <%= order.address.capitalize %>, <%= order.phone_number %>
+      </div>
+    <div class="card-text ml-2">
+      <% order.cards.each do |card| %>
+      <%= card.menu_item.name %> x <%= card.quantity %>
+      Subtotal: $<%= card.total %> <br>
+      <% end %>
+      <br>
+    </div>
+    <div class="card-footer">
+      <strong>Total cost</strong> with delivery: $<%= order.subtotal + 2.44 %>, ordered at <%= order.created_at.to_date %>
+    </div>
+  </div>
+      <% end %>
+</div>
