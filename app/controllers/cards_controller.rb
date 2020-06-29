@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
 
-
+# This controller  creates, updates and destroys the cards inside our shopping
+# carts and orders.
   def create
     @shopping_cart = current_shopping_cart
     @card = @shopping_cart.cards.new(card_params)

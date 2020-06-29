@@ -13,6 +13,7 @@
       <%= card.menu_item.name %> x <%= card.quantity %>
         <% if session[:currency] = 'euros' %>
         Subtotal: €<%= card.price_in_euros %> <br>
+
         <% else %>
         Subtotal: $<%= card.total %> <br>
         <% end %>

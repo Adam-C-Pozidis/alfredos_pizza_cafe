@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+# This controller contains the information for our Homepage and the several
+# actions of navigations
 
   def index
     @menu_items = MenuItem.all

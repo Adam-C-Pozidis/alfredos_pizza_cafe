@@ -1,4 +1,9 @@
 class ApplicationController < ActionController::Base
+# This controller is the super controller of all others and is setting the
+# current shoppign cart on every action.
+# The include aplicationHelper is doing the same but we need it for the app
+# to run properly
+
   include ApplicationHelper
 
   before_action :current_shopping_cart

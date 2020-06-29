@@ -1,5 +1,5 @@
 module ApplicationHelper
-
+# This modules sets our shopping cart and current user for every action we take
 
   def current_customer
     if session[:user_id]
@@ -17,10 +17,5 @@ module ApplicationHelper
 
     end
   end
-
-  def login?
-    !!current_customer
-  end
-
 
 end
